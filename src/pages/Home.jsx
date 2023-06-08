@@ -3,7 +3,7 @@ import ProductList from '../components/ProductList';
 
 const Home = () => {
 	return (
-		<div className='flex flex-col'>
+		<div>
 			<Layout>
 				<ProductList />
 			</Layout>

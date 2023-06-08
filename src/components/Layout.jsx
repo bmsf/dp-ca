@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
 	return (
-		<div>
+		<div className='flex flex-col justify-between h-screen'>
 			<Navbar />
 			{children}
 			<Footer />

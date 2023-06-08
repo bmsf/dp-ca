@@ -24,7 +24,7 @@ function App() {
 					element={<CheckoutSuccessPage />}
 				/>
 				<Route exact path='/contact' element={<ContactPage />} />
-				<Route exact path='/product' element={<ProductPage />} />
+				<Route exact path='/product/:id' element={<ProductPage />} />
 			</Routes>
 		</>
 	);
