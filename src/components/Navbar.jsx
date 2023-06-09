@@ -12,7 +12,9 @@ const Navbar = () => {
 					</li>
 				</ul>
 			</nav>
-			<Cart />
+			<Link to='/cart'>
+				<Cart />
+			</Link>
 		</header>
 	);
 };

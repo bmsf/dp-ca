@@ -13,20 +13,6 @@ import {
 } from './pages';
 
 function App() {
-	useEffect(() => {}, []);
-
-	// const [cartItems, setCartItems] = useState([]);
-
-	// const [itemCount, setItemCount] = useState(0);
-
-	// const addToCart = (item) => {
-	// 	const updatedCartItems = [...cartItems, item];
-	// 	const updatedItemCount = itemCount + 1;
-
-	// 	setCartItems(updatedCartItems);
-	// 	setItemCount(updatedItemCount);
-	// };
-
 	return (
 		<CartProvider>
 			<Routes>

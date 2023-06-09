@@ -47,7 +47,6 @@ const ProductPage = () => {
 	const discountedPriceToShow = calculateDiscountedPrice();
 	const discountAmount = product ? product.price - discountedPriceToShow : 0;
 
-	// console.log(product);
 	return (
 		<Layout>
 			<div className='container mx-auto py-8'>
