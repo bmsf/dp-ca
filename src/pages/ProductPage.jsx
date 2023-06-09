@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { CartContext } from '../CartContext';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 
@@ -6,6 +7,9 @@ const ProductPage = () => {
 	const { id } = useParams();
 
 	const [product, setProduct] = useState(null);
+
+	const { addToCart } = useContext(CartContext);
+	const [isAddedToCart, setIsAddedToCart] = useState(false);
 
 	useEffect(() => {
 		const fetchProduct = async () => {
@@ -18,6 +22,16 @@ const ProductPage = () => {
 
 		fetchProduct();
 	}, [id]);
+
+	const handleAddToCart = () => {
+		addToCart(product);
+		setIsAddedToCart(true);
+
+		// Reset the state after a brief delay (e.g., 2 seconds)
+		setTimeout(() => {
+			setIsAddedToCart(false);
+		}, 2000);
+	};
 
 	const calculateDiscountedPrice = () => {
 		if (
@@ -33,7 +47,7 @@ const ProductPage = () => {
 	const discountedPriceToShow = calculateDiscountedPrice();
 	const discountAmount = product ? product.price - discountedPriceToShow : 0;
 
-	console.log(product);
+	// console.log(product);
 	return (
 		<Layout>
 			<div className='container mx-auto py-8'>
@@ -65,8 +79,12 @@ const ProductPage = () => {
 								<p className='text-xl font-bold mb-4'>${product.price}</p>
 							)}
 
-							<button className='bg-blue-500 text-white px-4 py-2 rounded'>
-								Add to Cart
+							<button
+								className='bg-blue-500 text-white px-4 py-2 rounded'
+								onClick={handleAddToCart}
+								disabled={isAddedToCart} // Disable the button while the confirmation is displayed
+							>
+								{isAddedToCart ? 'Added to Cart!' : 'Add to Cart'}
 							</button>
 
 							{product.reviews && product.reviews.length > 0 && (
